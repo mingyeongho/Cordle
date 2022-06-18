@@ -2,8 +2,8 @@
   --color-tone-1: #121212;
   --color-tone-2: #343434;
   --color-tone-3: #565656;
-  --color-tone-4: #787878;
-  --color-tone-5: #909090;
+  --color-tone-4: #909090;
+  --color-tone-5: #d3d6da;
   --color-tone-6: #efefef;
   --color-tone-7: #ffffff;
 }
@@ -44,6 +44,10 @@ body.dark-theme svg {
   color: var(--color-tone-6);
 }
 
+body.dark-theme button {
+  background-color: var(--color-tone-4);
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: var(--color-tone-1);
@@ -62,5 +66,9 @@ body.dark-theme svg {
 
   body.light-theme svg {
     color: var(--color-tone-1);
+  }
+
+  body.light-theme button {
+    background-color: var(--color-tone-5);
   }
 }

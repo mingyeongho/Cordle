@@ -32,7 +32,6 @@ const Header = () => {
       document.body.classList.remove("dark-theme");
       document.body.classList.add("light-theme");
     }
-    console.log(currentTheme);
     localStorage.setItem("theme", currentTheme);
   }, [currentTheme]);
 

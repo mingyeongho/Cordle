@@ -2,8 +2,8 @@
 $color_tone_1: #121212;
 $color_tone_2: #343434;
 $color_tone_3: #565656;
-$color_tone_4: #787878;
-$color_tone_5: #909090;
+$color_tone_4: #909090;
+$color_tone_5: #d3d6da;
 $color_tone_6: #efefef;
 $color_tone_7: #ffffff;
 
@@ -13,4 +13,10 @@ $padding_y: 0.5rem;
 
 // Header
 
-// Main
+// Key
+$key_padding_x: 0.75rem;
+$key_padding_y: 0.75rem;
+$key_margin_x: 0.25rem;
+$key_margin_y: 0.25rem;
+$key_min_width: 44px;
+$key_height: 56px;
