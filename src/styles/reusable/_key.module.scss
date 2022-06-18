@@ -1,7 +1,6 @@
 @import "../variable.module";
 
 .key_container {
-  background-color: $color_tone_5;
   color: inherit;
   padding: $key_padding_y $key_padding_x;
   margin: $key_margin_y $key_margin_x;
@@ -13,5 +12,5 @@
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }

@@ -8,3 +8,7 @@ export const KEYBOARD = [
   ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
   ["Enter", "z", "x", "c", "v", "b", "n", "m", "Delete"],
 ];
+
+// Board
+export const ROW = 6;
+export const COL = 5;

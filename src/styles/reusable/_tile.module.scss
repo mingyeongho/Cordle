@@ -1,0 +1,14 @@
+@import "../variable.module";
+
+.tile_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $color_tone_3;
+  text-transform: uppercase;
+  margin: $tile_margin_y $tile_margin_x;
+  font-weight: bold;
+  font-size: 1.875rem;
+  width: $tile_width;
+  height: $tile_height;
+}

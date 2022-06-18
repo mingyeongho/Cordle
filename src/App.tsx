@@ -1,13 +1,16 @@
+import { RecoilRoot } from "recoil";
 import styles from "./App.module.scss";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 
 function App() {
   return (
-    <div className={styles.App}>
-      <Header></Header>
-      <Main></Main>
-    </div>
+    <RecoilRoot>
+      <div className={styles.App}>
+        <Header></Header>
+        <Main></Main>
+      </div>
+    </RecoilRoot>
   );
 }
 
