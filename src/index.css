@@ -1,13 +1,66 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-tone-1: #121212;
+  --color-tone-2: #343434;
+  --color-tone-3: #565656;
+  --color-tone-4: #787878;
+  --color-tone-5: #909090;
+  --color-tone-6: #efefef;
+  --color-tone-7: #ffffff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  padding: 0.5rem 0;
+}
+
+body {
+  background-color: var(--color-tone-6);
+  color: var(--color-tone-1);
+  transition: all 0.5s;
+}
+
+body svg {
+  color: var(--color-tone-1);
+}
+
+body.dark-theme {
+  background-color: var(--color-tone-1);
+  color: var(--color-tone-6);
+}
+
+body.dark-theme svg {
+  color: var(--color-tone-6);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-tone-1);
+    color: var(--color-tone-6);
+    transition: all 0.5s;
+  }
+
+  body svg {
+    color: var(--color-tone-6);
+  }
+
+  body.light-theme {
+    background-color: var(--color-tone-6);
+    color: var(--color-tone-1);
+  }
+
+  body.light-theme svg {
+    color: var(--color-tone-1);
+  }
 }

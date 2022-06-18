@@ -8,8 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "react": "^18.0.0-rc.3",
+    "react-dom": "^18.0.0-rc.3",
+    "recoil": "^0.7.3",
+    "sass": "^1.52.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

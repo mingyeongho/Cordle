@@ -1,0 +1,28 @@
+@import "../variable.module";
+
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 $padding_x;
+  border-bottom: 2px solid $color_tone_3;
+
+  h1 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon {
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+}
