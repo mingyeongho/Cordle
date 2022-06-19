@@ -42,7 +42,10 @@ const Header = () => {
   };
 
   const onClickReset = () => {
+    // localStorage를 비우기
     localStorage.clear();
+    // 새로고침
+    location.reload();
   };
 
   return (
