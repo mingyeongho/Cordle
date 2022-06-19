@@ -6,6 +6,9 @@ $color_tone_4: #909090;
 $color_tone_5: #d3d6da;
 $color_tone_6: #efefef;
 $color_tone_7: #ffffff;
+$correct_color: hsl(115, 29%, 43%);
+$present_color: hsl(49, 51%, 47%);
+$absent_color: hsl(240, 2%, 23%);
 
 // Public
 $padding_x: 1rem;
@@ -20,9 +23,11 @@ $key_margin_x: 0.25rem;
 $key_margin_y: 0.25rem;
 $key_min_width: 44px;
 $key_height: 56px;
+$key_font_size: 1rem;
 
 // Tile
 $tile_margin_x: 0.25rem;
 $tile_margin_y: 0.25rem;
 $tile_width: 60px;
 $tile_height: 60px;
+$tile_font_size: 1.875rem;
