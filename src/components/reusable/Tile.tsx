@@ -4,9 +4,9 @@ import { TileProps } from "../files/interface";
 const Tile = ({ char, state }: TileProps) => {
   return (
     <div
-      className={`${styles.tile_container} ${char && styles.fill} ${
-        state && styles[state]
-      } ${state && styles.rotate}`}
+      className={`tile ${styles.tile_container}  ${state && styles[state]} ${
+        state && "rotate"
+      } ${char && "fill"}`}
     >
       {char}
     </div>

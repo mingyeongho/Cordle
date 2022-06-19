@@ -3,7 +3,7 @@
   --color-tone-2: #343434;
   --color-tone-3: #565656;
   --color-tone-4: #909090;
-  --color-tone-5: #d3d6da;
+  --color-tone-5: #c5c7c9;
   --color-tone-6: #efefef;
   --color-tone-7: #ffffff;
 }
@@ -35,6 +35,24 @@ body svg {
   color: var(--color-tone-1);
 }
 
+body .tile {
+  border-color: var(--color-tone-5);
+}
+
+.fill {
+  border-color: var(--color-tone-2);
+  -webkit-animation: scale-up 0.125s;
+  animation: scale-up 0.125s;
+}
+
+.rotate {
+  -webkit-animation: rotate-hor-center 0.5s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  border: none;
+  color: var(--color-tone-7);
+}
+
 body.dark-theme {
   background-color: var(--color-tone-1);
   color: var(--color-tone-6);
@@ -48,6 +66,14 @@ body.dark-theme button {
   background-color: var(--color-tone-4);
 }
 
+body.dark-theme .tile {
+  border-color: var(--color-tone-3);
+}
+
+body.dark-theme .fill {
+  border-color: var(--color-tone-4);
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: var(--color-tone-1);
@@ -57,6 +83,14 @@ body.dark-theme button {
 
   body svg {
     color: var(--color-tone-6);
+  }
+
+  body .tile {
+    border-color: var(--color-tone-3);
+  }
+
+  body .fill {
+    border-color: var(--color-tone-4);
   }
 
   body.light-theme {
@@ -70,5 +104,58 @@ body.dark-theme button {
 
   body.light-theme button {
     background-color: var(--color-tone-5);
+  }
+
+  body.light-theme .tile {
+    border-color: var(--color-tone-5);
+  }
+
+  body.light-theme .fill {
+    border-color: var(--color-tone-2);
+  }
+}
+
+@-webkit-keyframes scale-up {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes rotate-hor-center {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
+  }
+}
+@keyframes rotate-hor-center {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
   }
 }

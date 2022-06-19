@@ -41,9 +41,15 @@ const Header = () => {
     });
   };
 
+  const onClickReset = () => {
+    localStorage.clear();
+  };
+
   return (
     <header className={styles.header_container}>
-      <button className={styles.icon}>{REPEAT}</button>
+      <button className={styles.icon} onClick={onClickReset}>
+        {REPEAT}
+      </button>
       <h1>{LOGO}</h1>
       <button className={styles.icon} onClick={onClickToggleBtn}>
         {currentTheme === "dark" ? DARK : LIGHT}
