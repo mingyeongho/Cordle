@@ -43,6 +43,7 @@ body .rotate {
   animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 }
 
+/* Light theme */
 body.light-theme {
   background-color: var(--color-tone-6);
   color: var(--color-tone-1);
@@ -64,7 +65,7 @@ body.light-theme .key {
   background-color: var(--color-tone-5);
 }
 
-/* OS가 Light Theme일 때 Dark Theme 선택 */
+/* Dark theme */
 body.dark-theme {
   background-color: var(--color-tone-1);
   color: var(--color-tone-6);
