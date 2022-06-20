@@ -23,6 +23,7 @@ const Header = () => {
     localStorage.getItem("theme") ?? theme
   );
 
+  // Light Theme & Dark Theme 설정
   // button을 누르면 localStorage가 바뀜.
   useEffect(() => {
     if (currentTheme === "dark") {

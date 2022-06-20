@@ -1,6 +1,7 @@
 import { TileProps } from "./interface";
 
 const ANSWER = "focus";
+
 const compare = (row: TileProps[]): string[] => {
   const answer = ANSWER.split("");
   const guess = row.map((tile) => tile.char);

@@ -25,34 +25,46 @@ body,
   padding: 0.5rem 0;
 }
 
+/* light theme & dark theme 주석 달면서 css 적용시키기 */
 body {
-  background-color: var(--color-tone-6);
-  color: var(--color-tone-1);
   transition: all 0.5s;
 }
 
-body svg {
-  color: var(--color-tone-1);
-}
-
-body .tile {
-  border-color: var(--color-tone-5);
-}
-
-.fill {
-  border-color: var(--color-tone-2);
+body .fill {
   -webkit-animation: scale-up 0.125s;
   animation: scale-up 0.125s;
 }
 
-.rotate {
+body .rotate {
+  border: none;
+  color: var(--color-tone-7);
   -webkit-animation: rotate-hor-center 0.5s
     cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  border: none;
-  color: var(--color-tone-7);
 }
 
+body.light-theme {
+  background-color: var(--color-tone-6);
+  color: var(--color-tone-1);
+}
+
+body.light-theme svg {
+  color: var(--color-tone-1);
+}
+
+body.light-theme .tile {
+  border-color: var(--color-tone-5);
+}
+
+body.light-theme .fill {
+  border-color: var(--color-tone-2);
+}
+
+body.light-theme .key {
+  background-color: var(--color-tone-5);
+}
+
+/* OS가 Light Theme일 때 Dark Theme 선택 */
 body.dark-theme {
   background-color: var(--color-tone-1);
   color: var(--color-tone-6);
@@ -62,7 +74,7 @@ body.dark-theme svg {
   color: var(--color-tone-6);
 }
 
-body.dark-theme button {
+body.dark-theme .key {
   background-color: var(--color-tone-4);
 }
 
@@ -74,47 +86,7 @@ body.dark-theme .fill {
   border-color: var(--color-tone-4);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--color-tone-1);
-    color: var(--color-tone-6);
-    transition: all 0.5s;
-  }
-
-  body svg {
-    color: var(--color-tone-6);
-  }
-
-  body .tile {
-    border-color: var(--color-tone-3);
-  }
-
-  body .fill {
-    border-color: var(--color-tone-4);
-  }
-
-  body.light-theme {
-    background-color: var(--color-tone-6);
-    color: var(--color-tone-1);
-  }
-
-  body.light-theme svg {
-    color: var(--color-tone-1);
-  }
-
-  body.light-theme button {
-    background-color: var(--color-tone-5);
-  }
-
-  body.light-theme .tile {
-    border-color: var(--color-tone-5);
-  }
-
-  body.light-theme .fill {
-    border-color: var(--color-tone-2);
-  }
-}
-
+/* KeyFrame */
 @-webkit-keyframes scale-up {
   0% {
     transform: scale(0.9);
