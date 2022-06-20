@@ -25,3 +25,20 @@
 - scss
 
 ## History
+
+- 0618
+
+  - Dark Mode 구현
+  - KeyBoard와 Board에 Dark Mode에 따른 색 설정
+
+- 0619
+
+  - localStorage를 사용해서 사용자가 입력한 값 저장
+  - Refresh해도 전에 사용했던 값들이 있어야됨.
+
+- 0620
+
+  - KeyBoard에 클릭이벤트 적용
+
+- 0621
+  - Key에 state에 따라 색을 주고싶다.(Tile처럼)
