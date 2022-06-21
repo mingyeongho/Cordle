@@ -1,12 +1,10 @@
-import { TileProps } from "./interface";
-
 const ANSWER = "focus";
 
-const compare = (row: TileProps[]): string[] => {
-  const answer = ANSWER.split("");
-  const guess = row.map((tile) => tile.char);
-  const result: string[] = guess.map((char, idx) => {
-    return ANSWER[idx] === char
+const compare = (guess: string): string[] => {
+  const guessArray: string[] = guess.split(""); // guess를 Array로 바꿈.
+  const answerArray: string[] = ANSWER.split(""); // ANSWER도 Array로 바꿈.
+  const result: string[] = guessArray.map((char, idx) => {
+    return answerArray[idx] === char
       ? "correct"
       : ANSWER.includes(char)
       ? "present"

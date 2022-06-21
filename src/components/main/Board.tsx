@@ -3,14 +3,21 @@ import { useRecoilState } from "recoil";
 import styles from "../../styles/main/_board.module.scss";
 import compare from "../files/compare";
 import { COL, REGEX } from "../files/constants";
-import { boardState, positionState } from "../recoil/atom";
+import {
+  boardState,
+  guessState,
+  keyboardState,
+  positionState,
+} from "../recoil/atom";
 import Tile from "../reusable/Tile";
 
 const Board = () => {
   // enter를 누르면 localStorage.setItem('board')에 저장되어야 됨.
   const [board, setBoard] = useRecoilState(boardState);
+  const [guess, setGuess] = useRecoilState(guessState); // 현재 입력중인 단어
   const [position, setPosition] = useRecoilState(positionState);
   const { i, j } = { ...position };
+  const [keyboard, setKeyboard] = useRecoilState(keyboardState);
 
   useEffect(() => {
     const onKeyUp = (e: KeyboardEvent) => {
@@ -20,6 +27,7 @@ const Board = () => {
       if (REGEX.test(key)) {
         // j가 COL 보다 작으면 추가
         if (j < COL) {
+          setGuess((prev) => prev.concat(key));
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {
               return idx === i
@@ -28,19 +36,19 @@ const Board = () => {
             });
             return newBoard;
           });
-          j !== COL &&
-            setPosition((prev) => {
-              return { ...prev, j: prev.j + 1 };
-            });
+          setPosition((prev) => {
+            return { ...prev, j: prev.j + 1 };
+          });
         }
       }
       // Enter를 누르면 localStorage에 저장되어야 함.
       else if (key === "Enter") {
         if (j === COL) {
+          const states = compare(guess);
+          setGuess("");
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {
               if (idx === i) {
-                const states = compare(row);
                 return row.map((tile, idx) => {
                   return { ...tile, state: states[idx] };
                 });
@@ -53,11 +61,31 @@ const Board = () => {
           setPosition((prev) => {
             return { ...prev, i: prev.i + 1, j: 0 };
           });
+          setKeyboard((prev) => {
+            const guessArray = guess.split("");
+            const newKeyboard = [...prev].map((row, idx) => {
+              return row.map((key, idx) => {
+                const { char } = key;
+                const index = guessArray.indexOf(char);
+                if (index !== -1) {
+                  return { ...key, state: states[index] };
+                } else {
+                  return key;
+                }
+              });
+            });
+            return newKeyboard;
+          });
         }
       }
       // Backspace
       else if (key === "Backspace") {
         if (j !== 0) {
+          setGuess((prev) => {
+            const guessArr = prev.split("");
+            guessArr.splice(prev.length - 1, 1);
+            return guessArr.join("");
+          });
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {
               return idx === i
@@ -82,6 +110,7 @@ const Board = () => {
     if (position.j === 0 && position.i !== 0) {
       localStorage.setItem("boardState", JSON.stringify(board));
       localStorage.setItem("positionState", JSON.stringify(position));
+      localStorage.setItem("keyboardState", JSON.stringify(keyboard));
     }
   }, [position]);
 

@@ -2,14 +2,21 @@ import styles from "../../styles/main/_keyboard.module.scss";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import compare from "../files/compare";
-import { COL, KEYBOARD, REGEX } from "../files/constants";
-import { boardState, positionState } from "../recoil/atom";
+import { COL, REGEX } from "../files/constants";
+import {
+  boardState,
+  guessState,
+  keyboardState,
+  positionState,
+} from "../recoil/atom";
 import Key from "../reusable/Key";
 
 const Keyboard = () => {
   const [board, setBoard] = useRecoilState(boardState);
+  const [guess, setGuess] = useRecoilState(guessState);
   const [position, setPosition] = useRecoilState(positionState);
   const { i, j } = { ...position };
+  const [keyboard, setKeyboard] = useRecoilState(keyboardState);
 
   const onClickKey = (e: any) => {
     const target = e.target;
@@ -17,6 +24,7 @@ const Keyboard = () => {
     if (tagName === "BUTTON") {
       if (REGEX.test(innerHTML)) {
         if (j < COL) {
+          setGuess((prev) => prev.concat(innerHTML));
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {
               return idx === i
@@ -25,19 +33,19 @@ const Keyboard = () => {
             });
             return newBoard;
           });
-          j !== COL &&
-            setPosition((prev) => {
-              return { ...prev, j: prev.j + 1 };
-            });
+          setPosition((prev) => {
+            return { ...prev, j: prev.j + 1 };
+          });
         }
       }
       // Enter를 누르면 localStorage에 저장되어야 함.
       else if (innerHTML === "Enter") {
         if (j === COL) {
+          const states = compare(guess);
+          setGuess("");
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {
               if (idx === i) {
-                const states = compare(row);
                 return row.map((tile, idx) => {
                   return { ...tile, state: states[idx] };
                 });
@@ -50,11 +58,31 @@ const Keyboard = () => {
           setPosition((prev) => {
             return { ...prev, i: prev.i + 1, j: 0 };
           });
+          setKeyboard((prev) => {
+            const guessArray = guess.split("");
+            const newKeyboard = [...prev].map((row, idx) => {
+              return row.map((key, idx) => {
+                const { char } = key;
+                const index = guessArray.indexOf(char);
+                if (index !== -1) {
+                  return { ...key, state: states[index] };
+                } else {
+                  return key;
+                }
+              });
+            });
+            return newKeyboard;
+          });
         }
       }
       // Delete
       else if (innerHTML === "Delete") {
         if (j !== 0) {
+          setGuess((prev) => {
+            const guessArr = prev.split("");
+            guessArr.splice(prev.length - 1, 1);
+            return guessArr.join("");
+          });
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {
               return idx === i
@@ -75,16 +103,18 @@ const Keyboard = () => {
     if (position.j === 0 && position.i !== 0) {
       localStorage.setItem("boardState", JSON.stringify(board));
       localStorage.setItem("positionState", JSON.stringify(position));
+      localStorage.setItem("keyboardState", JSON.stringify(keyboard));
     }
   }, [position]);
 
   return (
     <div className={styles.keyboard_container} onClick={onClickKey}>
-      {KEYBOARD.map((row, idx) => (
+      {keyboard.map((row, idx) => (
         <div key={idx} className={styles.keyboard_row}>
-          {row.map((key, idx) => (
-            <Key char={key} key={idx}></Key>
-          ))}
+          {row.map((val, idx) => {
+            const { char, state } = val;
+            return <Key char={char} state={state} key={idx}></Key>;
+          })}
         </div>
       ))}
     </div>

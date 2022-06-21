@@ -1,8 +1,12 @@
 import styles from "../../styles/reusable/_key.module.scss";
 import { KeyProps } from "../files/interface";
 
-const Key = ({ char }: KeyProps) => {
-  return <button className={`${styles.key_container} key`}>{char}</button>;
+const Key = ({ char, state }: KeyProps) => {
+  return (
+    <button className={`key ${styles.key_container} ${state && styles[state]}`}>
+      {char}
+    </button>
+  );
 };
 
 export default Key;

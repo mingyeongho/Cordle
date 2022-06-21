@@ -1,0 +1,121 @@
+@import "./styles/variable.module";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  padding: 0.5rem 0;
+}
+
+/* light theme & dark theme 주석 달면서 css 적용시키기 */
+
+body {
+  transition: all 0.5s;
+
+  & .fill {
+    -webkit-animation: scale-up 0.125s;
+    animation: scale-up 0.125s;
+  }
+  & .rotate {
+    border: none;
+    color: $color_tone_7;
+    -webkit-animation: rotate-hor-center 0.5s
+      cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+    animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+      both;
+  }
+
+  // light-theme
+  &.light-theme {
+    background-color: $color_tone_6;
+    color: $color_tone_1;
+
+    & svg {
+      color: $color_tone_1;
+    }
+    & .tile {
+      border-color: $color_tone_5;
+    }
+    & .fill {
+      border-color: $color_tone_2;
+    }
+    & .key {
+      background-color: $color_tone_5;
+    }
+  }
+
+  // dark-theme
+  &.dark-theme {
+    background-color: $color_tone_1;
+    color: $color_tone_6;
+
+    & svg {
+      color: $color_tone_6;
+    }
+    & .tile {
+      border-color: $color_tone_3;
+    }
+    & .fill {
+      border-color: $color_tone_4;
+    }
+    & .key {
+      background-color: $color_tone_4;
+    }
+  }
+}
+
+/* KeyFrame */
+@-webkit-keyframes scale-up {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes rotate-hor-center {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
+  }
+}
+@keyframes rotate-hor-center {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
+  }
+}

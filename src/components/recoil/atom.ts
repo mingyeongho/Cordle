@@ -1,6 +1,6 @@
 import { atom } from "recoil";
-import { COL, ROW } from "../files/constants";
-import { PositionProps, TileProps } from "../files/interface";
+import { COL, KEYBOARD, ROW } from "../files/constants";
+import { KeyProps, PositionProps, TileProps } from "../files/interface";
 
 export const boardState = atom<TileProps[][]>({
   key: "boardState",
@@ -18,4 +18,20 @@ export const positionState = atom<PositionProps>({
         i: 0,
         j: 0,
       },
+});
+
+export const keyboardState = atom<KeyProps[][]>({
+  key: "keyboardState",
+  default: localStorage.getItem("keyboardState")
+    ? JSON.parse(localStorage.getItem("keyboardState")!)
+    : KEYBOARD.map((row) =>
+        row.map((key) => {
+          return { char: key };
+        })
+      ),
+});
+
+export const guessState = atom<string>({
+  key: "guessState",
+  default: "",
 });

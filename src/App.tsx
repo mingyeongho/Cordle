@@ -1,5 +1,5 @@
 import { RecoilRoot } from "recoil";
-import styles from "./App.module.scss";
+import styles from "./_app.module.scss";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 

@@ -10,8 +10,8 @@ export const KEYBOARD = [
 ];
 
 // Board
-export const ROW = 6;
-export const COL = 5;
+export const ROW: number = 6;
+export const COL: number = 5;
 
 // 영문자 입력 정규표현식
-export const REGEX = /^[a-z]{1}/;
+export const REGEX: RegExp = /^[a-z]{1}/;

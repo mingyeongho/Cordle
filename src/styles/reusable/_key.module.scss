@@ -14,3 +14,18 @@
   font-weight: bold;
   font-size: $key_font_size;
 }
+
+.correct {
+  background-color: $correct_color !important;
+  color: $color_tone_7;
+}
+
+.present {
+  background-color: $present_color !important;
+  color: $color_tone_7;
+}
+
+.absent {
+  background-color: $absent_color !important;
+  color: $color_tone_7;
+}
