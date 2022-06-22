@@ -1,4 +1,4 @@
-const ANSWER = "focus";
+import { ANSWER } from "./constants";
 
 const compare = (guess: string): string[] => {
   const guessArray: string[] = guess.split(""); // guess를 Array로 바꿈.

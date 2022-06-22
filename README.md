@@ -47,4 +47,7 @@
 
 - 0622
 
+  - Key State에 따라 다른 색 주는 로직 업데이트
+    - 한번 correct인 Key는 계속 correct
+    - present인 Key는 states[index]가 correct일 때만 업데이트
   - 단어를 랜덤으로 가져오고 단어 수를 사용자가 정하면 좋겠다.

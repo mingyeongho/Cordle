@@ -43,10 +43,14 @@ const Header = () => {
   };
 
   const onClickReset = () => {
-    // localStorage를 비우기
-    localStorage.clear();
-    // 새로고침
-    location.reload();
+    const isReset: boolean = confirm("새 게임을 하시겠습니까?");
+
+    if (isReset) {
+      // localStorage를 비우기
+      localStorage.clear();
+      // 새로고침
+      location.reload();
+    }
   };
 
   return (

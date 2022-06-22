@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { COL, KEYBOARD, ROW } from "../files/constants";
+import { COL, KEYBOARD, ROW, URL } from "../files/constants";
 import { KeyProps, PositionProps, TileProps } from "../files/interface";
 
 export const boardState = atom<TileProps[][]>({
