@@ -61,14 +61,25 @@ const Board = () => {
           setPosition((prev) => {
             return { ...prev, i: prev.i + 1, j: 0 };
           });
+          // 이미 correct인 Key는 색을 계속 유지해야됨.
           setKeyboard((prev) => {
             const guessArray = guess.split("");
             const newKeyboard = [...prev].map((row, idx) => {
               return row.map((key, idx) => {
-                const { char } = key;
+                const { char, state } = key;
                 const index = guessArray.indexOf(char);
                 if (index !== -1) {
-                  return { ...key, state: states[index] };
+                  // 이미 state가 있을 경우와 없을 경우
+                  if (state) {
+                    // state가 correct일 경우 -> 무조건 현재 key가 리턴
+                    if (state === "correct") return { ...key };
+                    // state가 present일 경우 - states[index]가 correct일 경우에만 update
+                    else if (state === "present" && states[index] === "correct")
+                      return { ...key, state: states[index] };
+                    else return { ...key, state: states[index] };
+                  } else {
+                    return { ...key, state: states[index] };
+                  }
                 } else {
                   return key;
                 }
