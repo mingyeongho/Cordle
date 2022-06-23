@@ -35,3 +35,8 @@ export const guessState = atom<string>({
   key: "guessState",
   default: "",
 });
+
+export const isGameOverState = atom<boolean>({
+  key: "isGameOverState",
+  default: false,
+});

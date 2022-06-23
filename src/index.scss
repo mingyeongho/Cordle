@@ -17,6 +17,12 @@ body,
   padding: 0.5rem 0;
 }
 
+#portal {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* light theme & dark theme 주석 달면서 css 적용시키기 */
 
 body {
@@ -52,6 +58,10 @@ body {
     & .key {
       background-color: $color_tone_5;
     }
+    & .modal {
+      background-color: $color_tone_2;
+      color: white;
+    }
   }
 
   // dark-theme
@@ -70,6 +80,10 @@ body {
     }
     & .key {
       background-color: $color_tone_4;
+    }
+    & .modal {
+      background-color: white;
+      color: black;
     }
   }
 }

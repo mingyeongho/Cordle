@@ -1,16 +1,11 @@
 import styles from "../../styles/header/_header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faRepeat,
-  faToggleOff,
-  faToggleOn,
-} from "@fortawesome/free-solid-svg-icons";
-import { LOGO } from "../files/constants";
+import { faToggleOff, faToggleOn } from "@fortawesome/free-solid-svg-icons";
+import { LOGO, NEWGAME } from "../files/constants";
 import { useEffect, useState } from "react";
 
 const LIGHT = <FontAwesomeIcon icon={faToggleOff} />;
 const DARK = <FontAwesomeIcon icon={faToggleOn} />;
-const REPEAT = <FontAwesomeIcon icon={faRepeat} />;
 
 const Header = () => {
   // media query중 운영체제가 현재 가지고 있는 theme
@@ -44,7 +39,6 @@ const Header = () => {
 
   const onClickReset = () => {
     const isReset: boolean = confirm("새 게임을 하시겠습니까?");
-
     if (isReset) {
       // localStorage를 비우기
       localStorage.clear();
@@ -55,11 +49,9 @@ const Header = () => {
 
   return (
     <header className={styles.header_container}>
-      <button className={styles.icon} onClick={onClickReset}>
-        {REPEAT}
-      </button>
+      <button onClick={onClickReset}>{NEWGAME}</button>
       <h1>{LOGO}</h1>
-      <button className={styles.icon} onClick={onClickToggleBtn}>
+      <button onClick={onClickToggleBtn}>
         {currentTheme === "dark" ? DARK : LIGHT}
       </button>
     </header>

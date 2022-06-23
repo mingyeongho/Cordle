@@ -1,6 +1,6 @@
 // Header
 export const LOGO: string = "CORDLE";
-export const MENU: string = "MENU";
+export const NEWGAME: string = "New Game";
 
 // KEYBOARD
 export const KEYBOARD: string[][] = [
@@ -12,6 +12,9 @@ export const KEYBOARD: string[][] = [
 // Board
 export const ROW: number = 6;
 export const COL: number = 5;
+
+// GameOver
+export const CANCEL = "Cancel";
 
 // 영문자 입력 정규표현식
 export const REGEX: RegExp = /^[a-z]{1}/;

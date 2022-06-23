@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import styles from "../../styles/main/_board.module.scss";
 import compare from "../files/compare";
 import { COL, REGEX } from "../files/constants";
+import GameOver from "../modal/GameOver";
 import {
   boardState,
   guessState,
   keyboardState,
   positionState,
 } from "../recoil/atom";
+import Modal from "../reusable/Modal";
 import Tile from "../reusable/Tile";
 
 const Board = () => {
@@ -18,6 +20,7 @@ const Board = () => {
   const [position, setPosition] = useRecoilState(positionState);
   const { i, j } = { ...position };
   const [keyboard, setKeyboard] = useRecoilState(keyboardState);
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
   useEffect(() => {
     const onKeyUp = (e: KeyboardEvent) => {
@@ -87,6 +90,7 @@ const Board = () => {
             });
             return newKeyboard;
           });
+          setIsGameOver((prev) => !prev);
         }
       }
       // Backspace
@@ -111,7 +115,7 @@ const Board = () => {
         }
       }
     };
-    document.addEventListener("keyup", onKeyUp);
+    isGameOver === false && document.addEventListener("keyup", onKeyUp);
     return () => {
       document.removeEventListener("keyup", onKeyUp);
     };
@@ -126,16 +130,23 @@ const Board = () => {
   }, [position]);
 
   return (
-    <div className={styles.board_container}>
-      {board.map((row, idx) => (
-        <div className={styles.board_row} key={idx}>
-          {row.map((tile, idx) => {
-            const { char, state } = tile;
-            return <Tile key={idx} char={char} state={state}></Tile>;
-          })}
-        </div>
-      ))}
-    </div>
+    <>
+      <div className={styles.board_container}>
+        {board.map((row, idx) => (
+          <div className={styles.board_row} key={idx}>
+            {row.map((tile, idx) => {
+              const { char, state } = tile;
+              return <Tile key={idx} char={char} state={state}></Tile>;
+            })}
+          </div>
+        ))}
+      </div>
+      {isGameOver && (
+        <Modal>
+          <GameOver setIsGameOver={setIsGameOver}></GameOver>
+        </Modal>
+      )}
+    </>
   );
 };
 

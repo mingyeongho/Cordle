@@ -1,0 +1,40 @@
+@import "../variable.module";
+
+.gameover_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //   align-items: center;
+  gap: 6rem;
+
+  .btn_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+
+    button {
+      border: none;
+      outline: none;
+      background-color: $correct_color;
+      color: $color_tone_7;
+      padding: 0.25rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .cancel_btn {
+      border: none;
+      outline: none;
+      background-color: $color_tone_3;
+      color: $color_tone_7;
+      padding: 0.25rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+  }
+}
