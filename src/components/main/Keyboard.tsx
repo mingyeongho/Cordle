@@ -11,8 +11,6 @@ import {
   positionState,
 } from "../recoil/atom";
 import Key from "../reusable/Key";
-import Modal from "../reusable/Modal";
-import GameOver from "../modal/GameOver";
 
 const Keyboard = () => {
   const [board, setBoard] = useRecoilState(boardState);
