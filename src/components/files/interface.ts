@@ -20,5 +20,5 @@ export interface ModalProps {
 }
 
 export interface GameOverProps {
-  setIsGameOver: Dispatch<SetStateAction<boolean>>;
+  setIsShow: Dispatch<SetStateAction<boolean>>;
 }

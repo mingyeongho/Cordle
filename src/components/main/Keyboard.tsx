@@ -1,27 +1,34 @@
 import styles from "../../styles/main/_keyboard.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import compare from "../files/compare";
 import { COL, REGEX } from "../files/constants";
 import {
   boardState,
   guessState,
+  isGameOverState,
   keyboardState,
   positionState,
 } from "../recoil/atom";
 import Key from "../reusable/Key";
+import Modal from "../reusable/Modal";
+import GameOver from "../modal/GameOver";
 
 const Keyboard = () => {
   const [board, setBoard] = useRecoilState(boardState);
   const [guess, setGuess] = useRecoilState(guessState);
   const [position, setPosition] = useRecoilState(positionState);
-  const { i, j } = { ...position };
   const [keyboard, setKeyboard] = useRecoilState(keyboardState);
+  const [isGameOver, setIsGameOver] = useRecoilState(isGameOverState);
+
+  const [isShow, setIsShow] = useState<boolean>(false);
+
+  const { i, j } = { ...position };
 
   const onClickKey = (e: any) => {
     const target = e.target;
     const { tagName, innerHTML } = target;
-    if (tagName === "BUTTON") {
+    if (tagName === "BUTTON" && !isGameOver) {
       if (REGEX.test(innerHTML)) {
         if (j < COL) {
           setGuess((prev) => prev.concat(innerHTML));
@@ -73,6 +80,12 @@ const Keyboard = () => {
             });
             return newKeyboard;
           });
+          if (
+            JSON.stringify(states) ===
+            JSON.stringify(new Array(5).fill("correct"))
+          ) {
+            setIsGameOver(true);
+          }
         }
       }
       // Delete
@@ -106,6 +119,13 @@ const Keyboard = () => {
       localStorage.setItem("keyboardState", JSON.stringify(keyboard));
     }
   }, [position]);
+
+  useEffect(() => {
+    if (isGameOver) {
+      setIsShow(true);
+      localStorage.setItem("isGameOverState", true.toString());
+    }
+  }, [isGameOver]);
 
   return (
     <div className={styles.keyboard_container} onClick={onClickKey}>

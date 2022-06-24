@@ -2,9 +2,9 @@ import styles from "../../styles/modal/_gameover.module.scss";
 import { CANCEL, NEWGAME } from "../files/constants";
 import { GameOverProps } from "../files/interface";
 
-const GameOver = ({ setIsGameOver }: GameOverProps) => {
+const GameOver = ({ setIsShow }: GameOverProps) => {
   const onClickCancel = () => {
-    setIsGameOver((prev) => !prev);
+    setIsShow(false);
   };
 
   const onClickReset = () => {

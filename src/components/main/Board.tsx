@@ -7,6 +7,7 @@ import GameOver from "../modal/GameOver";
 import {
   boardState,
   guessState,
+  isGameOverState,
   keyboardState,
   positionState,
 } from "../recoil/atom";
@@ -18,9 +19,12 @@ const Board = () => {
   const [board, setBoard] = useRecoilState(boardState);
   const [guess, setGuess] = useRecoilState(guessState); // 현재 입력중인 단어
   const [position, setPosition] = useRecoilState(positionState);
-  const { i, j } = { ...position };
   const [keyboard, setKeyboard] = useRecoilState(keyboardState);
-  const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [isGameOver, setIsGameOver] = useRecoilState<boolean>(isGameOverState);
+
+  const [isShow, setIsShow] = useState<boolean>(false);
+
+  const { i, j } = { ...position };
 
   useEffect(() => {
     const onKeyUp = (e: KeyboardEvent) => {
@@ -90,7 +94,12 @@ const Board = () => {
             });
             return newKeyboard;
           });
-          setIsGameOver((prev) => !prev);
+          if (
+            JSON.stringify(states) ===
+            JSON.stringify(new Array(5).fill("correct"))
+          ) {
+            setIsGameOver(true);
+          }
         }
       }
       // Backspace
@@ -129,6 +138,13 @@ const Board = () => {
     }
   }, [position]);
 
+  useEffect(() => {
+    if (isGameOver) {
+      setIsShow(true);
+      localStorage.setItem("isGameOverState", true.toString());
+    }
+  }, [isGameOver]);
+
   return (
     <>
       <div className={styles.board_container}>
@@ -141,9 +157,9 @@ const Board = () => {
           </div>
         ))}
       </div>
-      {isGameOver && (
+      {isShow && (
         <Modal>
-          <GameOver setIsGameOver={setIsGameOver}></GameOver>
+          <GameOver setIsShow={setIsShow}></GameOver>
         </Modal>
       )}
     </>

@@ -31,12 +31,14 @@ export const keyboardState = atom<KeyProps[][]>({
       ),
 });
 
+export const isGameOverState = atom<boolean>({
+  key: "isGameOverState",
+  default: localStorage.getItem("isGameOverState")
+    ? Boolean(localStorage.getItem("isGameOverState"))
+    : false,
+});
+
 export const guessState = atom<string>({
   key: "guessState",
   default: "",
-});
-
-export const isGameOverState = atom<boolean>({
-  key: "isGameOverState",
-  default: false,
 });
