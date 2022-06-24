@@ -1,10 +1,13 @@
 import styles from "../../styles/modal/_gameover.module.scss";
 import { CANCEL, NEWGAME } from "../files/constants";
 import { GameOverProps } from "../files/interface";
+import { isGameOverState } from "../recoil/atom";
 
 const GameOver = ({ setIsShow }: GameOverProps) => {
+  isGameOverState && document.getElementById("portal")?.classList.add("show");
   const onClickCancel = () => {
     setIsShow(false);
+    document.getElementById("portal")?.classList.remove("show");
   };
 
   const onClickReset = () => {

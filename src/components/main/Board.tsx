@@ -139,10 +139,13 @@ const Board = () => {
   }, [position]);
 
   useEffect(() => {
-    if (isGameOver) {
-      setIsShow(true);
-      localStorage.setItem("isGameOverState", true.toString());
-    }
+    setTimeout(() => {
+      if (isGameOver) {
+        setIsShow(true);
+        document.getElementById("portal")?.classList.add("show");
+        localStorage.setItem("isGameOverState", true.toString());
+      }
+    }, 1000);
   }, [isGameOver]);
 
   return (

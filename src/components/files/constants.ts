@@ -16,6 +16,9 @@ export const COL: number = 5;
 // GameOver
 export const CANCEL = "Cancel";
 
+// InputLength
+export const SAVE = "Save";
+
 // 영문자 입력 정규표현식
 export const REGEX: RegExp = /^[a-z]{1}/;
 
@@ -28,4 +31,5 @@ export const ANSWER: string =
     .then((res) => res.json())
     .then((data) => data[0])
     .catch((err) => console.error(err)));
+
 localStorage.setItem("answerState", ANSWER);

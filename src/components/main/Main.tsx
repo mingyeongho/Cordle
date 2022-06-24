@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styles from "../../styles/main/_main.module.scss";
 import Board from "./Board";
 import Keyboard from "./Keyboard";

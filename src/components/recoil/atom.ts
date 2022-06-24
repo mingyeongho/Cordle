@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { COL, KEYBOARD, ROW, URL } from "../files/constants";
+import { COL, KEYBOARD, ROW } from "../files/constants";
 import { KeyProps, PositionProps, TileProps } from "../files/interface";
 
 export const boardState = atom<TileProps[][]>({
@@ -7,7 +7,11 @@ export const boardState = atom<TileProps[][]>({
   // localStorage.getItem('board')가 있다면 가져다 쓰고 없으면 새로 만듬
   default: localStorage.getItem("boardState")
     ? JSON.parse(localStorage.getItem("boardState")!)
-    : new Array(ROW).fill(0).map((_) => new Array(COL).fill({ char: "" })),
+    : new Array(ROW).fill(0).map((_) =>
+        new Array(COL).fill({
+          char: "",
+        })
+      ),
 });
 
 export const positionState = atom<PositionProps>({
