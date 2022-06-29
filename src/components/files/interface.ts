@@ -22,3 +22,11 @@ export interface ModalProps {
 export interface GameOverProps {
   setIsShow: Dispatch<SetStateAction<boolean>>;
 }
+
+export interface BoardProps {
+  answer: string;
+}
+
+export interface KeyboardProps {
+  answer: string;
+}

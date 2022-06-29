@@ -11,8 +11,9 @@ import {
   positionState,
 } from "../recoil/atom";
 import Key from "../reusable/Key";
+import { KeyboardProps } from "../files/interface";
 
-const Keyboard = () => {
+const Keyboard = ({ answer }: KeyboardProps) => {
   const [board, setBoard] = useRecoilState(boardState);
   const [guess, setGuess] = useRecoilState(guessState);
   const [position, setPosition] = useRecoilState(positionState);
@@ -46,7 +47,7 @@ const Keyboard = () => {
       // Enter를 누르면 localStorage에 저장되어야 함.
       else if (innerHTML === "Enter") {
         if (j === COL) {
-          const states = compare(guess);
+          const states = compare(answer, guess);
           setGuess("");
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {

@@ -24,12 +24,3 @@ export const REGEX: RegExp = /^[a-z]{1}/;
 
 export const URL: string =
   "https://random-word-api.herokuapp.com/word?length=" + COL;
-
-export const ANSWER: string =
-  localStorage.getItem("answerState") ??
-  (await fetch(URL)
-    .then((res) => res.json())
-    .then((data) => data[0])
-    .catch((err) => console.error(err)));
-
-localStorage.setItem("answerState", ANSWER);

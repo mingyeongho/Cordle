@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import styles from "../../styles/main/_board.module.scss";
 import compare from "../files/compare";
 import { COL, REGEX } from "../files/constants";
+import { BoardProps } from "../files/interface";
 import GameOver from "../modal/GameOver";
 import {
   boardState,
@@ -14,7 +15,7 @@ import {
 import Modal from "../reusable/Modal";
 import Tile from "../reusable/Tile";
 
-const Board = () => {
+const Board = ({ answer }: BoardProps) => {
   // enter를 누르면 localStorage.setItem('board')에 저장되어야 됨.
   const [board, setBoard] = useRecoilState(boardState);
   const [guess, setGuess] = useRecoilState(guessState); // 현재 입력중인 단어
@@ -51,7 +52,7 @@ const Board = () => {
       // Enter를 누르면 localStorage에 저장되어야 함.
       else if (key === "Enter") {
         if (j === COL) {
-          const states = compare(guess);
+          const states = compare(answer, guess);
           setGuess("");
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {
