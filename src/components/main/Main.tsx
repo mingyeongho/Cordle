@@ -26,7 +26,6 @@ const Main = () => {
 
   useEffect(() => {
     answer !== "" && localStorage.setItem("answerState", answer);
-    console.log(answer);
   }, [answer]);
 
   return (

@@ -11,7 +11,6 @@ const compare = ({ answer, guess }: CompareProps) => {
       ? "present"
       : "absent";
   });
-  console.log(result);
   return result;
 };
 export default compare;
