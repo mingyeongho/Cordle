@@ -30,3 +30,8 @@ export interface BoardProps {
 export interface KeyboardProps {
   answer: string;
 }
+
+export interface CompareProps {
+  answer: string;
+  guess: string;
+}

@@ -52,7 +52,7 @@ const Board = ({ answer }: BoardProps) => {
       // Enter를 누르면 localStorage에 저장되어야 함.
       else if (key === "Enter") {
         if (j === COL) {
-          const states = compare(answer, guess);
+          const states = compare({ answer, guess });
           setGuess("");
           setBoard((prev) => {
             const newBoard = [...prev].map((row, idx) => {

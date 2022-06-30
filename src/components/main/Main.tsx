@@ -7,10 +7,11 @@ import Keyboard from "./Keyboard";
 
 const Main = () => {
   const [answer, setAnswer] = useState<string>("");
+
   const fetch = async () => {
     try {
       const res = await axios.get(URL);
-      const word = res.data;
+      const word = res.data[0];
       setAnswer(word);
     } catch (e) {
       setAnswer("focus");
@@ -18,12 +19,16 @@ const Main = () => {
   };
 
   useEffect(() => {
-    localStorage.getItem("answerState") ?? fetch();
+    localStorage.getItem("answerState")
+      ? setAnswer(localStorage.getItem("answerState")!)
+      : fetch();
   }, []);
 
   useEffect(() => {
     answer !== "" && localStorage.setItem("answerState", answer);
+    console.log(answer);
   }, [answer]);
+
   return (
     <main className={styles.main_container}>
       <Board answer={answer}></Board>
