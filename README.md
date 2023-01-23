@@ -1,28 +1,100 @@
-# Cordle
+<h1 align='center'>Cordle</h1>
 
-## Description
+## 📖:목차
 
-- Custom + Wordle
+<ol>
+    <li>
+        <a href='#overview'>Overview</a>
+    </li>
+    <li>
+        <a href='#run'>환경설정 및 실행</a>
+    </li>
+    <li>
+        <a href='#features'>요구사항</a>
+    </li>
+    <li>
+        <a href='#library'>라이브러리</a>
+    </li>
+    <li>
+        <a href='#structure'>폴더 구조</a>
+    </li>
+    <li>
+        <a href='#agonize'>고민한 부분</a>
+    </li>
+    <li>
+        <a href='#improve'>개선사항</a>
+    </li>
+    
+</ol>
 
-## Function
 
-- 사용자가 몇 글자의 단어를 맞출지 결정했으면 좋겠다.
-- 사용자가 편하게 Reset 버튼을 누르면 새로운 글자 수와 새로운 단어로 Reset 된다. ✅
-  - Reset을 누르면 초기화 되면서 새로고침 되면 좋겠다.
-- 사용자가 Reset 버튼을 누르기 전에는 사용자가 입력했던 것들이 저장되어있으면 좋겠다. ✅
-  - 처음에 localStorage에 존재하면 recoil에서 가져오고 아니면 default 값을 할당한다.
-- 사용자의 기본 모드에 따른 다크모드 설정 ✅
-  - https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/#toggling-themes 참고
-  - css의 @media (prefers-color-scheme: dark || light)로 설정한다.
-  - 사용자는 toggle 버튼을 사용하여 기본 모드를 무시하고 모드를 설정할 수 있다.
-  - 페이지 새로고침 시 사용자가 설정한 모드를 유지할 수 있어야 한다.
-- 단어를 랜덤으로 가져와야됨.
+<h2 id='overview'>Overview</h2>
+<video src='https://user-images.githubusercontent.com/57670160/214074424-fa8108da-90cd-4703-adb6-b976c710eaab.mov'></video>
 
-## Stack
+<h2 id='run'>환경설정 및 실행</h2>
 
-- yarn
-- vite
-- react18
-- scss
+<pre>
+    git clone https://github.com/mingyeongho/Cordle.git
+    
+    npm run dev
+</pre>
 
-![cordle](https://user-images.githubusercontent.com/57670160/204075461-769c28e5-b72e-4735-be48-e81a24ba4334.gif)
+<h2 id='features'>요구사항</h2>
+<p>
+
+</p>
+
+
+<h2 id='library'>라이브러리</h2>
+<img width="438" alt="image" src="https://user-images.githubusercontent.com/57670160/214074921-0a09c664-28aa-476d-afd8-4a51e4dbb156.png">
+
+<h2 id='structure'>폴더 구조</h2>
+<pre>
+.
+├── App.tsx
+├── _app.module.scss
+├── components
+│   ├── files
+│   │   ├── compare.ts
+│   │   ├── constants.ts
+│   │   └── interface.ts
+│   ├── header
+│   │   └── Header.tsx
+│   ├── main
+│   │   ├── Board.tsx
+│   │   ├── Keyboard.tsx
+│   │   └── Main.tsx
+│   ├── modal
+│   │   └── GameOver.tsx
+│   ├── recoil
+│   │   └── atom.ts
+│   └── reusable
+│       ├── Key.tsx
+│       ├── Modal.tsx
+│       └── Tile.tsx
+├── favicon.svg
+├── index.scss
+├── logo.svg
+├── main.tsx
+├── styles
+│   ├── _variable.module.scss
+│   ├── header
+│   │   └── _header.module.scss
+│   ├── main
+│   │   ├── _board.module.scss
+│   │   ├── _keyboard.module.scss
+│   │   └── _main.module.scss
+│   ├── modal
+│   │   └── _gameover.module.scss
+│   └── reusable
+│       ├── _key.module.scss
+│       ├── _modal.module.scss
+│       └── _tile.module.scss
+└── vite-env.d.ts
+</pre>
+
+<h2 id='agonize'>고민한 부분</h2>
+a
+
+<h2 id='improve'>개선사항</h2>
+a
